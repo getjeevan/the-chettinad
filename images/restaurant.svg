@@ -1,0 +1,40 @@
+<svg width="400" height="320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff8f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8d4c4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="320" fill="url(#bgGradient5)"/>
+  
+  <!-- Restaurant interior - walls -->
+  <rect x="20" y="30" width="360" height="200" fill="#F5DEB3" stroke="#8B4513" stroke-width="2" rx="10"/>
+  
+  <!-- Dining tables -->
+  <rect x="40" y="80" width="80" height="80" fill="#D2B48C" stroke="#8B4513" stroke-width="1.5" rx="5"/>
+  <circle cx="80" cy="120" r="15" fill="#FFD700"/>
+  
+  <rect x="160" y="90" width="80" height="80" fill="#D2B48C" stroke="#8B4513" stroke-width="1.5" rx="5"/>
+  <circle cx="200" cy="130" r="15" fill="#FFD700"/>
+  
+  <rect x="280" y="80" width="80" height="80" fill="#D2B48C" stroke="#8B4513" stroke-width="1.5" rx="5"/>
+  <circle cx="320" cy="120" r="15" fill="#FFD700"/>
+  
+  <!-- Chairs -->
+  <rect x="55" y="50" width="25" height="25" fill="#8B4513" rx="3"/>
+  <rect x="175" y="60" width="25" height="25" fill="#8B4513" rx="3"/>
+  <rect x="295" y="50" width="25" height="25" fill="#8B4513" rx="3"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="50" r="8" fill="#B74F2A"/>
+  <circle cx="200" cy="45" r="8" fill="#B74F2A"/>
+  <circle cx="300" cy="50" r="8" fill="#B74F2A"/>
+  
+  <!-- Counter/Kitchen area -->
+  <rect x="40" y="200" width="320" height="60" fill="#CD853F" stroke="#8B4513" stroke-width="2" rx="5"/>
+  <text x="200" y="235" font-size="18" font-family="Arial" fill="#fff" text-anchor="middle" font-weight="bold">Kitchen</text>
+  
+  <!-- Text -->
+  <text x="200" y="290" font-size="20" font-family="Arial" fill="#333" text-anchor="middle" font-weight="bold">The Chettinad</text>
+  <text x="200" y="315" font-size="14" font-family="Arial" fill="#666" text-anchor="middle">Authentic South Indian Dining</text>
+</svg>
