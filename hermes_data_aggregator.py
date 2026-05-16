@@ -49,7 +49,7 @@ class HermesDataAggregator:
 
         # Create tables
         c.execute('''
-            CREATE TABLE IF NOT EXISTS swiggy_ads (
+            CREATE TABLE IF NOT EXISTS foodora_ads (
                 id INTEGER PRIMARY KEY,
                 date TEXT,
                 campaign_name TEXT,
@@ -65,7 +65,7 @@ class HermesDataAggregator:
         ''')
 
         c.execute('''
-            CREATE TABLE IF NOT EXISTS zomato_ads (
+            CREATE TABLE IF NOT EXISTS wolt_ads (
                 id INTEGER PRIMARY KEY,
                 date TEXT,
                 campaign_name TEXT,
@@ -165,14 +165,14 @@ class HermesDataAggregator:
             }
             logger.info("✅ Credentials loaded from environment")
 
-    def fetch_swiggy_ads(self) -> Dict[str, Any]:
-        """Fetch Swiggy Ads performance data"""
+    def fetch_foodora_ads(self) -> Dict[str, Any]:
+        """Fetch Foodora Ads performance data"""
         try:
-            logger.info("🔗 Fetching Swiggy Ads data...")
+            logger.info("🔗 Fetching Foodora Ads data...")
 
-            # This would use the Swiggy Ads API
+            # This would use the Foodora Ads API
             # For now, showing the structure
-            swiggy_data = {
+            foodora_data = {
                 'campaigns': [
                     {
                         'name': 'Biryani Ordering Campaign',
@@ -194,20 +194,20 @@ class HermesDataAggregator:
             }
 
             # Store in database
-            self.store_swiggy_data(swiggy_data)
-            logger.info("✅ Swiggy data fetched and stored")
-            return swiggy_data
+            self.store_foodora_data(foodora_data)
+            logger.info("✅ Foodora data fetched and stored")
+            return foodora_data
 
         except Exception as e:
-            logger.error(f"❌ Swiggy Ads error: {str(e)}")
+            logger.error(f"❌ Foodora Ads error: {str(e)}")
             return {}
 
-    def fetch_zomato_ads(self) -> Dict[str, Any]:
-        """Fetch Zomato Ads performance data"""
+    def fetch_wolt_ads(self) -> Dict[str, Any]:
+        """Fetch Wolt Ads performance data"""
         try:
-            logger.info("🔗 Fetching Zomato Ads data...")
+            logger.info("🔗 Fetching Wolt Ads data...")
 
-            zomato_data = {
+            wolt_data = {
                 'campaigns': [
                     {
                         'name': 'Biryani Delivery Campaign',
@@ -228,12 +228,12 @@ class HermesDataAggregator:
                 ]
             }
 
-            self.store_zomato_data(zomato_data)
-            logger.info("✅ Zomato data fetched and stored")
-            return zomato_data
+            self.store_wolt_data(wolt_data)
+            logger.info("✅ Wolt data fetched and stored")
+            return wolt_data
 
         except Exception as e:
-            logger.error(f"❌ Zomato Ads error: {str(e)}")
+            logger.error(f"❌ Wolt Ads error: {str(e)}")
             return {}
 
     def fetch_google_seo(self) -> Dict[str, Any]:
@@ -342,14 +342,14 @@ class HermesDataAggregator:
             logger.error(f"❌ Scraping error: {str(e)}")
             return {}
 
-    def store_swiggy_data(self, data: Dict[str, Any]):
-        """Store Swiggy data in database"""
+    def store_foodora_data(self, data: Dict[str, Any]):
+        """Store Foodora data in database"""
         conn = sqlite3.connect(self.db_path)
         c = conn.cursor()
 
         for campaign in data.get('campaigns', []):
             c.execute('''
-                INSERT INTO swiggy_ads
+                INSERT INTO foodora_ads
                 (date, campaign_name, impressions, clicks, conversions, spend, roi, cpa, ctr)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
@@ -367,14 +367,14 @@ class HermesDataAggregator:
         conn.commit()
         conn.close()
 
-    def store_zomato_data(self, data: Dict[str, Any]):
-        """Store Zomato data in database"""
+    def store_wolt_data(self, data: Dict[str, Any]):
+        """Store Wolt data in database"""
         conn = sqlite3.connect(self.db_path)
         c = conn.cursor()
 
         for campaign in data.get('campaigns', []):
             c.execute('''
-                INSERT INTO zomato_ads
+                INSERT INTO wolt_ads
                 (date, campaign_name, impressions, clicks, conversions, spend, roi, cpa, ctr)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
@@ -503,13 +503,13 @@ class HermesDataAggregator:
     def run_daily_aggregation(self):
         """Run complete daily data aggregation"""
         logger.info("\n" + "="*60)
-        logger.info("🍛 BIRYANI EXPRESS DAILY DATA AGGREGATION")
+        logger.info("🍛 BIRYANI EXPRESS DAILY DATA AGGREGATION (OSLO)")
         logger.info("="*60)
 
         try:
             # Fetch all data
-            self.fetch_swiggy_ads()
-            self.fetch_zomato_ads()
+            self.fetch_foodora_ads()
+            self.fetch_wolt_ads()
             self.fetch_google_seo()
             self.fetch_instagram_metrics()
             self.scrape_competitor_websites()

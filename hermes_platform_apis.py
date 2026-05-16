@@ -20,13 +20,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class SwiggeyAdsAPI:
-    """Swiggy Ads API integration"""
+class FoodoraAdsAPI:
+    """Foodora Ads API integration (Nordic delivery platform)"""
 
     def __init__(self, api_key: str, restaurant_id: str):
         self.api_key = api_key
         self.restaurant_id = restaurant_id
-        self.base_url = "https://ads-api.swiggy.com/v1"
+        self.base_url = "https://api.foodora.com/v2"
         self.headers = {
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json'
@@ -49,46 +49,46 @@ class SwiggeyAdsAPI:
         try:
             response = requests.get(endpoint, headers=self.headers, params=params)
             response.raise_for_status()
-            logger.info("✅ Swiggy Ads: Campaign performance fetched")
+            logger.info("✅ Foodora: Campaign performance fetched")
             return response.json()
         except requests.exceptions.RequestException as e:
-            logger.error(f"❌ Swiggy Ads API error: {str(e)}")
+            logger.error(f"❌ Foodora API error: {str(e)}")
             return {}
 
-    def get_ad_groups(self) -> List[Dict]:
-        """Fetch active ad groups"""
-        endpoint = f"{self.base_url}/restaurants/{self.restaurant_id}/ad-groups"
+    def get_ad_performance(self) -> List[Dict]:
+        """Fetch active ad performance"""
+        endpoint = f"{self.base_url}/restaurants/{self.restaurant_id}/ads/performance"
 
         try:
             response = requests.get(endpoint, headers=self.headers)
             response.raise_for_status()
-            logger.info("✅ Swiggy Ads: Ad groups fetched")
-            return response.json().get('ad_groups', [])
+            logger.info("✅ Foodora: Ad performance fetched")
+            return response.json().get('ads', [])
         except requests.exceptions.RequestException as e:
-            logger.error(f"❌ Swiggy Ads API error: {str(e)}")
+            logger.error(f"❌ Foodora API error: {str(e)}")
             return []
 
-    def get_keywords_performance(self) -> List[Dict]:
-        """Fetch keyword-level performance"""
-        endpoint = f"{self.base_url}/restaurants/{self.restaurant_id}/keywords/performance"
+    def get_restaurant_stats(self) -> Dict[str, Any]:
+        """Fetch restaurant-level statistics"""
+        endpoint = f"{self.base_url}/restaurants/{self.restaurant_id}/stats"
 
         try:
             response = requests.get(endpoint, headers=self.headers)
             response.raise_for_status()
-            logger.info("✅ Swiggy Ads: Keywords performance fetched")
-            return response.json().get('keywords', [])
+            logger.info("✅ Foodora: Restaurant stats fetched")
+            return response.json()
         except requests.exceptions.RequestException as e:
-            logger.error(f"❌ Swiggy Ads API error: {str(e)}")
-            return []
+            logger.error(f"❌ Foodora API error: {str(e)}")
+            return {}
 
 
-class ZomatoAdsAPI:
-    """Zomato Ads API integration"""
+class WoltAdsAPI:
+    """Wolt Ads API integration (Nordic delivery platform)"""
 
     def __init__(self, api_key: str, restaurant_id: str):
         self.api_key = api_key
         self.restaurant_id = restaurant_id
-        self.base_url = "https://www.zomato.com/api/partner/v2"
+        self.base_url = "https://api.wolt.com/v1"
         self.headers = {
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json'
@@ -96,15 +96,15 @@ class ZomatoAdsAPI:
 
     def get_ad_campaigns(self) -> List[Dict]:
         """Fetch active ad campaigns"""
-        endpoint = f"{self.base_url}/restaurant/{self.restaurant_id}/ads/campaigns"
+        endpoint = f"{self.base_url}/restaurants/{self.restaurant_id}/marketing/campaigns"
 
         try:
             response = requests.get(endpoint, headers=self.headers)
             response.raise_for_status()
-            logger.info("✅ Zomato Ads: Campaigns fetched")
+            logger.info("✅ Wolt: Campaigns fetched")
             return response.json().get('campaigns', [])
         except requests.exceptions.RequestException as e:
-            logger.error(f"❌ Zomato Ads API error: {str(e)}")
+            logger.error(f"❌ Wolt API error: {str(e)}")
             return []
 
     def get_campaign_stats(self, campaign_id: str, date_from: str = None, date_to: str = None) -> Dict:
@@ -114,7 +114,7 @@ class ZomatoAdsAPI:
         if not date_to:
             date_to = datetime.now().strftime('%Y-%m-%d')
 
-        endpoint = f"{self.base_url}/restaurant/{self.restaurant_id}/ads/campaigns/{campaign_id}/stats"
+        endpoint = f"{self.base_url}/restaurants/{self.restaurant_id}/marketing/campaigns/{campaign_id}/analytics"
         params = {
             'start_date': date_from,
             'end_date': date_to
@@ -123,23 +123,23 @@ class ZomatoAdsAPI:
         try:
             response = requests.get(endpoint, headers=self.headers, params=params)
             response.raise_for_status()
-            logger.info("✅ Zomato Ads: Campaign stats fetched")
+            logger.info("✅ Wolt: Campaign stats fetched")
             return response.json()
         except requests.exceptions.RequestException as e:
-            logger.error(f"❌ Zomato Ads API error: {str(e)}")
+            logger.error(f"❌ Wolt API error: {str(e)}")
             return {}
 
-    def get_delivery_partner_performance(self) -> Dict:
+    def get_delivery_performance(self) -> Dict:
         """Fetch delivery performance metrics"""
-        endpoint = f"{self.base_url}/restaurant/{self.restaurant_id}/delivery/performance"
+        endpoint = f"{self.base_url}/restaurants/{self.restaurant_id}/analytics/delivery"
 
         try:
             response = requests.get(endpoint, headers=self.headers)
             response.raise_for_status()
-            logger.info("✅ Zomato Ads: Delivery performance fetched")
+            logger.info("✅ Wolt: Delivery performance fetched")
             return response.json()
         except requests.exceptions.RequestException as e:
-            logger.error(f"❌ Zomato Ads API error: {str(e)}")
+            logger.error(f"❌ Wolt API error: {str(e)}")
             return {}
 
 
@@ -320,29 +320,34 @@ class InstagramGraphAPI:
 
 
 class CompetitorScraper:
-    """Web scraper for competitor websites"""
+    """Web scraper for Nordic competitor websites"""
 
     def __init__(self):
         self.competitors = {
-            'House of Biryan': {
-                'website': 'https://houseofbiryan.com',
-                'zomato': 'https://www.zomato.com/restaurants/house-of-biryan',
-                'swiggy': 'https://www.swiggy.com/restaurants/house-of-biryan'
+            'Curry in Hurry': {
+                'website': 'https://www.curryinharry.no',
+                'foodora': 'https://www.foodora.no/restaurant/curry-in-hurry-oslo',
+                'wolt': 'https://wolt.com/en/nor/oslo/restaurant/curry-in-hurry'
             },
-            'Biryani By Kilo': {
-                'website': 'https://biryanibykilo.com',
-                'zomato': 'https://www.zomato.com/restaurants/biryani-by-kilo',
-                'swiggy': 'https://www.swiggy.com/restaurants/biryani-by-kilo'
+            'Spice Kitchen': {
+                'website': 'https://www.spicekitchen.no',
+                'foodora': 'https://www.foodora.no/restaurant/spice-kitchen-oslo',
+                'wolt': 'https://wolt.com/en/nor/oslo/restaurant/spice-kitchen'
             },
-            'Behrouz Biryani': {
-                'website': 'https://www.behrouzbiryani.in',
-                'zomato': 'https://www.zomato.com/restaurants/behrouz-biryani',
-                'swiggy': 'https://www.swiggy.com/restaurants/behrouz-biryani'
+            'Mumbai Masala': {
+                'website': 'https://www.mumbaimasala.no',
+                'foodora': 'https://www.foodora.no/restaurant/mumbai-masala-oslo',
+                'wolt': 'https://wolt.com/en/nor/oslo/restaurant/mumbai-masala'
+            },
+            'Desi Kitchen Oslo': {
+                'website': 'https://www.desikitchen.no',
+                'foodora': 'https://www.foodora.no/restaurant/desi-kitchen-oslo',
+                'wolt': 'https://wolt.com/en/nor/oslo/restaurant/desi-kitchen'
             }
         }
 
     def scrape_competitor(self, competitor_name: str) -> Dict[str, Any]:
-        """Scrape competitor data from aggregator platforms"""
+        """Scrape competitor data from Nordic platforms"""
         try:
             from bs4 import BeautifulSoup
 
@@ -353,33 +358,37 @@ class CompetitorScraper:
                 'data': {}
             }
 
-            # Scrape from Zomato
-            if 'zomato' in urls:
+            # Scrape from Foodora
+            if 'foodora' in urls:
                 try:
-                    response = requests.get(urls['zomato'], timeout=10)
+                    response = requests.get(urls['foodora'], timeout=10)
                     soup = BeautifulSoup(response.content, 'html.parser')
 
                     # Extract rating, reviews count, delivery time, etc.
-                    rating_elem = soup.find('div', {'class': 'sc-1q7bklc-1'})
+                    rating_elem = soup.find('div', {'class': 'rating'})
                     if rating_elem:
-                        competitor_data['data']['zomato_rating'] = rating_elem.text.strip()
+                        competitor_data['data']['foodora_rating'] = rating_elem.text.strip()
 
-                    logger.info(f"✅ Scraped {competitor_name} from Zomato")
+                    logger.info(f"✅ Scraped {competitor_name} from Foodora")
 
                 except Exception as e:
-                    logger.warning(f"⚠️  Could not scrape {competitor_name} from Zomato: {str(e)}")
+                    logger.warning(f"⚠️  Could not scrape {competitor_name} from Foodora: {str(e)}")
 
-            # Scrape from Swiggy
-            if 'swiggy' in urls:
+            # Scrape from Wolt
+            if 'wolt' in urls:
                 try:
-                    response = requests.get(urls['swiggy'], timeout=10)
+                    response = requests.get(urls['wolt'], timeout=10)
                     soup = BeautifulSoup(response.content, 'html.parser')
 
-                    # Extract metrics
-                    logger.info(f"✅ Scraped {competitor_name} from Swiggy")
+                    # Extract metrics (rating, delivery time, etc.)
+                    rating_elem = soup.find('div', {'class': 'RestaurantHeader__Rating'})
+                    if rating_elem:
+                        competitor_data['data']['wolt_rating'] = rating_elem.text.strip()
+
+                    logger.info(f"✅ Scraped {competitor_name} from Wolt")
 
                 except Exception as e:
-                    logger.warning(f"⚠️  Could not scrape {competitor_name} from Swiggy: {str(e)}")
+                    logger.warning(f"⚠️  Could not scrape {competitor_name} from Wolt: {str(e)}")
 
             return competitor_data
 
@@ -404,27 +413,27 @@ def test_all_apis():
     """Test function to verify all API connections"""
     print("🧪 Testing Platform API Connections\n")
 
-    # Test Swiggy (mock)
-    print("Testing Swiggy Ads API...")
+    # Test Foodora (mock)
+    print("Testing Foodora Ads API...")
     try:
-        swiggy = SwiggeyAdsAPI(
-            api_key=os.getenv('SWIGGY_API_KEY', 'test-key'),
-            restaurant_id=os.getenv('SWIGGY_RESTAURANT_ID', 'test-id')
+        foodora = FoodoraAdsAPI(
+            api_key=os.getenv('FOODORA_API_KEY', 'test-key'),
+            restaurant_id=os.getenv('FOODORA_RESTAURANT_ID', 'test-id')
         )
-        print("✅ Swiggy API initialized\n")
+        print("✅ Foodora API initialized\n")
     except Exception as e:
-        print(f"❌ Swiggy API error: {e}\n")
+        print(f"❌ Foodora API error: {e}\n")
 
-    # Test Zomato (mock)
-    print("Testing Zomato Ads API...")
+    # Test Wolt (mock)
+    print("Testing Wolt Ads API...")
     try:
-        zomato = ZomatoAdsAPI(
-            api_key=os.getenv('ZOMATO_API_KEY', 'test-key'),
-            restaurant_id=os.getenv('ZOMATO_RESTAURANT_ID', 'test-id')
+        wolt = WoltAdsAPI(
+            api_key=os.getenv('WOLT_API_KEY', 'test-key'),
+            restaurant_id=os.getenv('WOLT_RESTAURANT_ID', 'test-id')
         )
-        print("✅ Zomato API initialized\n")
+        print("✅ Wolt API initialized\n")
     except Exception as e:
-        print(f"❌ Zomato API error: {e}\n")
+        print(f"❌ Wolt API error: {e}\n")
 
     # Test Google Search Console
     print("Testing Google Search Console API...")
