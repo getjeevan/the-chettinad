@@ -1,0 +1,729 @@
+# 🍛 Biryani Express Obsidian Vault Setup
+**Knowledge Management + Claude AI Integration**
+
+---
+
+## 📁 Vault Structure
+
+```
+Biryani_Express_Oslo/
+│
+├─ 00_Dashboard/
+│  ├─ README.md                    (Vault overview)
+│  ├─ Daily_Status.md              (Updated daily)
+│  ├─ Weekly_Summary.md            (Claude-generated)
+│  └─ Monthly_Strategic_Review.md  (Claude-generated)
+│
+├─ 01_Market_Intelligence/
+│  ├─ Nordic_Market_Overview.md
+│  ├─ Oslo_Indian_Food_Market.md
+│  ├─ 02_Competitors/
+│  │  ├─ Curry_in_Hurry.md
+│  │  ├─ Spice_Kitchen.md
+│  │  ├─ Mumbai_Masala.md
+│  │  ├─ Desi_Kitchen_Oslo.md
+│  │  └─ Competitor_Analysis.md
+│  ├─ 02_SEO_Keyword_Research/
+│  │  ├─ Nordic_Keywords.md
+│  │  ├─ Seasonal_Trends.md
+│  │  └─ Ranking_Opportunities.md
+│  └─ 02_Market_Trends/
+│     ├─ Delivery_Trends.md
+│     └─ Consumer_Behavior.md
+│
+├─ 02_Operations/
+│  ├─ 01_Foodora/
+│  │  ├─ Foodora_Strategy.md
+│  │  ├─ Campaign_Ideas.md
+│  │  ├─ Performance_Metrics.md
+│  │  └─ Optimization_Plan.md
+│  ├─ 02_Wolt/
+│  │  ├─ Wolt_Strategy.md
+│  │  ├─ Campaign_Ideas.md
+│  │  ├─ Performance_Metrics.md
+│  │  └─ Optimization_Plan.md
+│  ├─ 03_Instagram/
+│  │  ├─ Content_Calendar.md
+│  │  ├─ Post_Performance.md
+│  │  ├─ Engagement_Trends.md
+│  │  └─ Content_Ideas.md
+│  └─ 04_SEO/
+│     ├─ Keyword_Rankings.md
+│     ├─ Blog_Ideas.md
+│     ├─ Technical_SEO.md
+│     └─ Link_Building.md
+│
+├─ 03_Data_Insights/
+│  ├─ Daily_Metrics.md            (From Hermes aggregator)
+│  ├─ Weekly_Performance.md        (Claude-generated analysis)
+│  ├─ Revenue_Trends.md
+│  ├─ Customer_Insights.md
+│  └─ 01_Aggregator_Data/
+│     ├─ Foodora_Raw_Data.md
+│     ├─ Wolt_Raw_Data.md
+│     ├─ SEO_Rankings.md
+│     └─ Instagram_Metrics.md
+│
+├─ 04_Strategic_Planning/
+│  ├─ 01_Quarterly_Plans/
+│  │  ├─ Q2_2026_Plan.md
+│  │  ├─ Q3_2026_Plan.md
+│  │  └─ Q4_2026_Plan.md
+│  ├─ 02_Annual_Strategy/
+│  │  ├─ 2026_Goals.md
+│  │  └─ 2026_Roadmap.md
+│  ├─ 03_Growth_Ideas/
+│  │  ├─ New_Markets.md
+│  │  ├─ Product_Innovation.md
+│  │  └─ Revenue_Streams.md
+│  └─ Decision_Log.md
+│
+├─ 05_Financial/
+│  ├─ Revenue_Tracking.md
+│  ├─ Budget_Allocation.md
+│  ├─ ROI_Analysis.md
+│  └─ Cost_Structure.md
+│
+├─ 06_Team_Notes/
+│  ├─ Meeting_Notes/
+│  │  ├─ 2026_05_16_Strategy.md
+│  │  └─ 2026_05_17_Operations.md
+│  ├─ Action_Items.md
+│  └─ Team_Learnings.md
+│
+├─ 07_Resources/
+│  ├─ API_Documentation.md
+│  ├─ Tools_Setup.md
+│  ├─ Data_Aggregator.md
+│  └─ Useful_Links.md
+│
+├─ 08_AI_Generated/
+│  ├─ Claude_Weekly_Reviews/
+│  │  ├─ 2026_W20_Review.md
+│  │  ├─ 2026_W21_Review.md
+│  │  └─ 2026_W22_Review.md
+│  ├─ Claude_Monthly_Reviews/
+│  │  ├─ 2026_May_Review.md
+│  │  └─ 2026_June_Review.md
+│  └─ Claude_Strategic_Analysis/
+│     ├─ Market_Opportunity.md
+│     ├─ Competitive_Gaps.md
+│     └─ Growth_Recommendations.md
+│
+└─ _Templates/
+   ├─ Daily_Status_Template.md
+   ├─ Weekly_Review_Template.md
+   ├─ Monthly_Strategic_Template.md
+   ├─ Competitor_Analysis_Template.md
+   ├─ Campaign_Plan_Template.md
+   └─ Decision_Template.md
+```
+
+---
+
+## 📝 Templates
+
+### **1. Daily Status Template**
+
+**File:** `00_Dashboard/Daily_Status.md`
+
+```markdown
+# Daily Status - {{DATE}}
+
+## 📊 Key Metrics
+- Foodora Orders: {{orders}}
+- Wolt Orders: {{orders}}
+- Total Revenue: {{revenue}} NOK
+- Website Traffic: {{traffic}} visitors
+
+## 🎯 Today's Wins
+- {{achievement 1}}
+- {{achievement 2}}
+- {{achievement 3}}
+
+## ⚠️ Challenges
+- {{challenge 1}}
+- {{action to resolve}}
+
+## 📈 Data Highlights
+- Top performing menu item: {{item}}
+- Busiest platform: Foodora / Wolt
+- Conversion rate: {{%}}
+
+## ✅ Actions Completed
+- [ ] Respond to customer reviews
+- [ ] Monitor ad performance
+- [ ] Check competitor activity
+- [ ] Update content calendar
+
+## 🔮 Tomorrow's Focus
+- {{priority 1}}
+- {{priority 2}}
+- {{priority 3}}
+
+## 📌 Notes
+{{additional notes}}
+
+---
+**Source:** Hermes Data Aggregator
+**Last Updated:** {{time}}
+**Next Update:** Tomorrow 6:00 AM
+```
+
+---
+
+### **2. Weekly Review Template**
+
+**File:** `_Templates/Weekly_Review_Template.md`
+
+**⚠️ This is filled by Claude**
+
+```markdown
+# Weekly Strategic Review - Week {{WEEK}}, {{YEAR}}
+
+## 📊 Performance Summary
+### Foodora
+- Orders: {{count}}
+- Revenue: {{NOK}}
+- ROI: {{%}}
+- Trend: {{↑ up / → flat / ↓ down}}
+
+### Wolt
+- Orders: {{count}}
+- Revenue: {{NOK}}
+- ROI: {{%}}
+- Trend: {{↑ up / → flat / ↓ down}}
+
+### SEO
+- Top keyword ranking: {{keyword}} (Position {{pos}})
+- Organic traffic: {{traffic}} visitors
+- New keywords ranking: {{count}}
+
+### Instagram
+- Engagement rate: {{%}}
+- Follower growth: {{count}}
+- Best performing post: {{post type}}
+
+## 🏆 Key Achievements
+- {{achievement 1 with impact}}
+- {{achievement 2 with impact}}
+- {{achievement 3 with impact}}
+
+## 📉 Areas for Improvement
+- {{area 1}} - {{specific action}}
+- {{area 2}} - {{specific action}}
+- {{area 3}} - {{specific action}}
+
+## 🔍 Competitive Insights
+- Curry in Hurry: {{activity}}
+- Spice Kitchen: {{activity}}
+- Mumbai Masala: {{activity}}
+- Desi Kitchen: {{activity}}
+
+## 💡 Claude's Recommendations
+*[Generated by Claude - see below]*
+
+## 🎯 Next Week's Priorities
+1. {{priority 1}} - {{rationale}}
+2. {{priority 2}} - {{rationale}}
+3. {{priority 3}} - {{rationale}}
+
+## 📌 Links
+- [[Daily_Status|Daily Metrics]]
+- [[Foodora Strategy]]
+- [[Wolt Strategy]]
+- [[SEO Keyword Rankings]]
+
+---
+**Generated by:** Claude AI
+**Date:** {{date}}
+**Based on:** Week {{week}} aggregated data
+```
+
+---
+
+### **3. Monthly Strategic Review Template**
+
+**File:** `_Templates/Monthly_Strategic_Template.md`
+
+**⚠️ This is filled by Claude**
+
+```markdown
+# Monthly Strategic Review - {{MONTH}} {{YEAR}}
+
+## 📊 Financial Summary
+- Total Revenue: {{NOK}}
+- Month-over-month growth: {{%}}
+- Highest revenue day: {{date}} ({{NOK}})
+- Average daily revenue: {{NOK}}
+
+## 🔄 Platform Performance
+### Foodora
+- Month Orders: {{count}}
+- Revenue: {{NOK}}
+- Average ROI: {{%}}
+- Trend: {{assessment}}
+
+### Wolt
+- Month Orders: {{count}}
+- Revenue: {{NOK}}
+- Average ROI: {{%}}
+- Trend: {{assessment}}
+
+### Direct Orders
+- Percentage of total: {{%}}
+- Growth: {{%}} vs last month
+- Opportunity: {{analysis}}
+
+## 🌟 Marketing Performance
+### Paid Advertising
+- Total spend: {{NOK}}
+- Total revenue from ads: {{NOK}}
+- ROI: {{%}}
+- Best platform: {{platform}}
+
+### SEO
+- Overall ranking improvement: {{%}}
+- New keywords ranking top 10: {{count}}
+- Organic traffic: {{visitors}}
+- Traffic growth: {{%}}
+
+### Instagram
+- Follower growth: {{count}}
+- Average engagement: {{%}}
+- Best post type: {{type}}
+- Reach growth: {{%}}
+
+## 🎯 Competitive Positioning
+### vs Curry in Hurry
+- {{metric}}: {{we are ahead/behind}}
+- {{metric}}: {{we are ahead/behind}}
+
+### vs Spice Kitchen
+- {{metric}}: {{we are ahead/behind}}
+- {{metric}}: {{we are ahead/behind}}
+
+### Overall Assessment
+{{Claude's competitive analysis}}
+
+## 💰 Financial Health
+- CAC (Customer Acquisition Cost): {{NOK}}
+- LTV (Lifetime Value): {{NOK}}
+- LTV/CAC Ratio: {{ratio}} (healthy if >3)
+- Margin: {{%}}
+
+## 🔍 Key Insights
+*Generated by Claude's analysis:*
+
+1. **Market Opportunity**
+   {{insight}}
+
+2. **Operational Excellence**
+   {{insight}}
+
+3. **Growth Lever**
+   {{insight}}
+
+4. **Risk Factor**
+   {{insight}}
+
+## 🎯 Strategic Recommendations
+*Claude's analysis for next month:*
+
+### Priority 1: {{Focus Area}}
+- **Action:** {{specific action}}
+- **Expected Impact:** {{impact}}
+- **Timeline:** {{timeline}}
+
+### Priority 2: {{Focus Area}}
+- **Action:** {{specific action}}
+- **Expected Impact:** {{impact}}
+- **Timeline:** {{timeline}}
+
+### Priority 3: {{Focus Area}}
+- **Action:** {{specific action}}
+- **Expected Impact:** {{impact}}
+- **Timeline:** {{timeline}}
+
+## 📈 Goals for Next Month
+- {{goal 1}} - Target: {{target}}
+- {{goal 2}} - Target: {{target}}
+- {{goal 3}} - Target: {{target}}
+
+## 📚 Related Notes
+- [[01_Market_Intelligence/Competitors|Competitive Analysis]]
+- [[02_Operations/Foodora/Performance_Metrics|Foodora Metrics]]
+- [[02_Operations/Wolt/Performance_Metrics|Wolt Metrics]]
+- [[04_Strategic_Planning/Decision_Log|Decisions Made]]
+
+---
+**Generated by:** Claude AI
+**Analysis Date:** {{date}}
+**Period:** {{month}} {{year}}
+**Data Source:** Hermes Aggregator + Manual Input
+```
+
+---
+
+## 🔄 Weekly Claude Workflow
+
+### **Every Monday at 9:00 AM**
+
+**Step 1: Gather Data**
+```
+Copy from Obsidian into Claude:
+- 04_Strategic_Planning/Decision_Log.md (last week's decisions)
+- 03_Data_Insights/Daily_Metrics.md (all last week's metrics)
+- 02_Operations/Foodora/Performance_Metrics.md
+- 02_Operations/Wolt/Performance_Metrics.md
+- 02_Operations/Instagram/Post_Performance.md
+- 01_Market_Intelligence/02_Competitors/*.md (competitor updates)
+```
+
+**Step 2: Send to Claude**
+```
+Prompt:
+
+"Analyze our Biryani Express performance for week {{week}}.
+
+Data:
+[PASTE ALL ABOVE]
+
+Please provide:
+1. Summary of last week's performance (Foodora, Wolt, SEO, Instagram)
+2. Key wins and why they happened
+3. Areas that underperformed and why
+4. Competitive intelligence: What are our competitors doing?
+5. 3 specific recommendations for this week
+6. Any patterns or trends you notice
+
+Format as Markdown ready to save to Obsidian."
+```
+
+**Step 3: Save Review**
+```
+Create file: 08_AI_Generated/Claude_Weekly_Reviews/2026_W{{week}}_Review.md
+Paste Claude's response
+Link from: 00_Dashboard/Weekly_Summary.md
+```
+
+**Step 4: Extract Actions**
+```
+From Claude's recommendations, create:
+02_Operations/Action_Items_Week_{{week}}.md
+
+Format as checklist:
+- [ ] Action 1 (Priority: High)
+- [ ] Action 2 (Priority: Medium)
+- [ ] Action 3 (Priority: Low)
+```
+
+---
+
+## 📅 Monthly Claude Workflow
+
+### **First Monday of Each Month at 10:00 AM**
+
+**Step 1: Export Aggregator Data**
+```bash
+# Copy from Hermes database
+sqlite3 /opt/hermes/data/biryani-express/biryani_metrics.db
+SELECT * FROM foodora_ads WHERE date >= '2026-05-01';
+SELECT * FROM wolt_ads WHERE date >= '2026-05-01';
+SELECT * FROM google_seo WHERE date >= '2026-05-01';
+SELECT * FROM instagram_metrics WHERE date >= '2026-05-01';
+```
+
+**Step 2: Copy to Claude**
+```
+Files to compile:
+- All Daily_Metrics.md from last month
+- All Weekly_Reviews from last month
+- 03_Financial/Revenue_Tracking.md
+- 04_Strategic_Planning/Decision_Log.md (all month's decisions)
+- 01_Market_Intelligence/02_Competitors/*.md
+- 02_Operations/*/Performance_Metrics.md
+```
+
+**Step 3: Send to Claude**
+```
+Prompt:
+
+"Create a comprehensive monthly strategic review for Biryani Express 
+(Oslo, May 2026).
+
+Raw data from all platforms:
+[PASTE ALL DATA]
+
+Please analyze and provide:
+
+1. Financial Summary
+   - Total revenue, growth %, best/worst days
+
+2. Platform Performance (Foodora vs Wolt)
+   - Orders, revenue, ROI, trend analysis
+   - Which platform is performing better and why?
+
+3. Marketing ROI
+   - Paid ads performance by platform
+   - SEO progress and opportunities
+   - Instagram engagement and growth
+
+4. Competitive Analysis
+   - How are we positioned vs Curry in Hurry, Spice Kitchen, etc?
+   - What can we learn from competitors?
+
+5. Customer Insights
+   - Top menu items, peak times, customer patterns
+   - Retention trends
+
+6. Strategic Recommendations (top 3)
+   - What should we focus on next month?
+   - Quick wins we should prioritize
+   - Long-term growth opportunities
+
+Format as complete Markdown report."
+```
+
+**Step 4: Save & Organize**
+```
+Create: 08_AI_Generated/Claude_Monthly_Reviews/2026_May_Review.md
+Paste entire Claude response
+Link from: 00_Dashboard/Monthly_Strategic_Review.md
+```
+
+**Step 5: Create Next Month's Plan**
+```
+Based on Claude's recommendations:
+Create: 04_Strategic_Planning/01_Quarterly_Plans/June_Plan.md
+
+Include:
+- 3 strategic priorities for June
+- Specific metrics to track
+- Success criteria
+- Actions required
+```
+
+---
+
+## 🔗 Integration with Hermes Aggregator
+
+### **Automated Data Import (Optional)**
+
+```python
+#!/usr/bin/env python3
+"""
+Sync Hermes data to Obsidian vault
+Run daily after aggregator completes
+"""
+
+import sqlite3
+import json
+from datetime import datetime
+from pathlib import Path
+
+OBSIDIAN_VAULT = Path("/path/to/Biryani_Express_Oslo")
+DB_PATH = Path("/opt/hermes/data/biryani-express/biryani_metrics.db")
+
+def sync_daily_metrics():
+    """Sync aggregator data to Daily_Metrics.md"""
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    
+    today = datetime.now().strftime('%Y-%m-%d')
+    
+    # Get today's data
+    c.execute("SELECT * FROM foodora_ads WHERE date = ?", (today,))
+    foodora_data = c.fetchall()
+    
+    c.execute("SELECT * FROM wolt_ads WHERE date = ?", (today,))
+    wolt_data = c.fetchall()
+    
+    c.execute("SELECT * FROM instagram_metrics WHERE date = ?", (today,))
+    instagram_data = c.fetchall()
+    
+    conn.close()
+    
+    # Create markdown
+    content = f"""# Daily Metrics - {today}
+
+## Foodora
+- Orders: {len(foodora_data)}
+- Total Spend: {sum(row[6] for row in foodora_data)} NOK
+- Total ROI: {sum(row[7] for row in foodora_data) / len(foodora_data) if foodora_data else 0:.2f}x
+
+## Wolt
+- Orders: {len(wolt_data)}
+- Total Spend: {sum(row[6] for row in wolt_data)} NOK
+- Total ROI: {sum(row[7] for row in wolt_data) / len(wolt_data) if wolt_data else 0:.2f}x
+
+## Instagram
+- Posts: {len(instagram_data)}
+- Avg Engagement: {sum(row[5] for row in instagram_data) / len(instagram_data) if instagram_data else 0:.2f}%
+
+---
+*Auto-synced from Hermes Aggregator*
+"""
+    
+    # Write to Obsidian
+    metrics_file = OBSIDIAN_VAULT / "03_Data_Insights" / "Daily_Metrics.md"
+    metrics_file.write_text(content)
+    
+    print(f"✅ Synced {today} metrics to Obsidian")
+
+if __name__ == "__main__":
+    sync_daily_metrics()
+```
+
+---
+
+## 📌 Key Obsidian Features to Use
+
+### **Linking**
+```markdown
+- [[01_Market_Intelligence/02_Competitors/Curry_in_Hurry|Curry in Hurry Analysis]]
+- [[02_Operations/Foodora/Strategy|Foodora Strategy]]
+- [[Daily_Status|Today's Status]]
+```
+
+### **Backlinks**
+Every competitor note links back to main analysis:
+```markdown
+[[Competitor_Analysis]] uses data from this note
+```
+
+### **Tags**
+```markdown
+#biryani #oslo #foodora #wolt #strategy #marketing #data
+#week-20 #may-2026 #priority-high
+```
+
+### **Dataview Queries** (if using Dataview plugin)
+```markdown
+```dataview
+TABLE date, revenue, roi FROM "03_Data_Insights"
+WHERE date >= 2026-05-01
+SORT date DESC
+```
+```
+
+---
+
+## 🎯 Your Weekly Rhythm
+
+**Monday:**
+- 📊 Gather all last week's data
+- 💬 Send to Claude for weekly review
+- 📝 Save Claude's response to Obsidian
+- ✅ Extract action items for this week
+
+**Tuesday-Friday:**
+- 📌 Update Daily Status daily
+- 📈 Monitor Foodora/Wolt performance
+- 📸 Track Instagram metrics
+- 🔍 Monitor competitors
+
+**Sunday Evening:**
+- 🔄 Prepare data for Monday's Claude review
+- 📋 Plan what to ask Claude
+
+**Month-end (Last Friday):**
+- 📤 Export full month's data
+- 💬 Send comprehensive analysis to Claude
+- 📊 Save monthly strategic review
+- 🎯 Create next month's plan
+
+---
+
+## 💡 Pro Tips
+
+✅ **Keep data organized** — Makes Claude analysis more accurate  
+✅ **Use consistent naming** — Easier to find and link notes  
+✅ **Link extensively** — Creates your knowledge graph  
+✅ **Review regularly** — Monthly Claude reviews keep you aligned  
+✅ **Update Daily Status** — So you don't need to remember details for Claude  
+✅ **Save Claude responses** — Build a history of strategic insights  
+✅ **Tag strategically** — Use tags for filtering and overview  
+
+---
+
+## 🚀 Getting Started
+
+**Week 1:**
+1. Create vault structure (folders)
+2. Add initial templates
+3. Start filling Daily Status daily
+4. Create first weekly Claude review
+
+**Week 2:**
+1. Add competitor analysis notes
+2. Document current strategy
+3. Get second weekly Claude review
+4. Start extracting patterns
+
+**Week 3:**
+1. Full competitive analysis from Claude
+2. SEO opportunities report
+3. Marketing optimization recommendations
+
+**Month 1:**
+1. Complete monthly strategic review from Claude
+2. Create quarterly plan based on insights
+3. Establish rhythm (weekly + monthly reviews)
+
+---
+
+**You now have:** A complete knowledge management system powered by Claude, integrated with your Hermes data aggregator. 🚀
+
+---
+
+## 📧 Claude Prompts You'll Use
+
+Save these in your Obsidian for reference:
+
+### **Weekly Review Prompt**
+```
+"Analyze our Biryani Express data for week [WEEK]:
+
+[PASTE: Daily metrics, decisions, competitor activity]
+
+Provide:
+1. Performance summary by platform
+2. 3 wins and why
+3. 3 underperformance areas and solutions
+4. Competitive intelligence
+5. 3 specific recommendations this week
+6. Any patterns/trends"
+```
+
+### **Monthly Review Prompt**
+```
+"Create comprehensive monthly strategic review for May 2026:
+
+[PASTE: All monthly data]
+
+Include:
+1. Financial summary with growth %
+2. Platform performance (Foodora vs Wolt)
+3. Marketing ROI by channel
+4. Competitive positioning
+5. Top 3 strategic recommendations
+6. Next month's priorities"
+```
+
+### **Gap Analysis Prompt**
+```
+"What are we missing? Review these notes:
+
+[PASTE: All your strategic notes]
+
+Tell me:
+1. What critical information is missing?
+2. What should we research next?
+3. Where are our competitive gaps?
+4. What opportunities are we not pursuing?"
+```
+
+---
+
+Ready to set up? Start with the folder structure, then add your first Daily Status! 🍛
