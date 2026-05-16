@@ -1,0 +1,275 @@
+{
+  "agent_config": {
+    "name": "biryani-express-agent",
+    "version": "1.0.0",
+    "workspace": "biryani-express-marketing",
+    "environment": "production",
+    "created_at": "2026-05-16T12:00:00Z"
+  },
+  "hermes_connection": {
+    "endpoints": {
+      "primary": "http://192.168.1.168:9119",
+      "fallback": "http://100.112.118.83:9119",
+      "protocol": "http"
+    },
+    "authentication": {
+      "api_key": "hermes_biryani_express_key_20260516",
+      "token_type": "bearer"
+    }
+  },
+  "monitoring_profiles": {
+    "competitor_monitoring": {
+      "enabled": true,
+      "interval_minutes": 15,
+      "targets": {
+        "tier_1": ["Biryani By Kilo", "Behrouz Biryani", "House of Biryan"],
+        "tier_2": ["Biryani Blues", "Bikkgane Biryani", "Aasife Biryani"]
+      },
+      "metrics": {
+        "pricing": {
+          "enabled": true,
+          "platforms": ["zomato", "swiggy", "website"],
+          "alert_threshold": "price_change_5%"
+        },
+        "menu_updates": {
+          "enabled": true,
+          "check_frequency": "daily",
+          "alert_on": "new_item"
+        },
+        "reviews_sentiment": {
+          "enabled": true,
+          "sources": ["zomato", "google_maps", "instagram"],
+          "alert_threshold": "sentiment_drop_10%"
+        },
+        "promotional_campaigns": {
+          "enabled": true,
+          "track": ["discounts", "offers", "limited_time"],
+          "alert_on": "new_campaign"
+        }
+      }
+    },
+    "seo_tracking": {
+      "enabled": true,
+      "interval_minutes": 60,
+      "targets": {
+        "search_console": {
+          "enabled": true,
+          "properties": ["biryaniexpress.no"],
+          "sync_interval": "24h"
+        },
+        "keyword_rankings": {
+          "enabled": true,
+          "tools": ["ahrefs", "semrush"],
+          "keywords": 50,
+          "check_frequency": "daily",
+          "target_keywords": [
+            "biryani delivery [city]",
+            "best biryani online",
+            "customized biryani delivery",
+            "biryani near me",
+            "[city] biryani delivery"
+          ]
+        },
+        "backlink_profile": {
+          "enabled": true,
+          "monitor_new": true,
+          "check_frequency": "weekly"
+        },
+        "local_search": {
+          "enabled": true,
+          "location_targets": ["all"],
+          "metrics": ["map_visibility", "local_pack_ranking", "review_count"]
+        }
+      },
+      "alerts": {
+        "ranking_drop_5_positions": true,
+        "lost_keywords": true,
+        "low_ctr_opportunity": true
+      }
+    },
+    "marketing_analytics": {
+      "enabled": true,
+      "interval_minutes": 30,
+      "platforms": {
+        "swiggy_ads": {
+          "enabled": true,
+          "metrics": ["spend", "impressions", "conversions", "roi", "cpa"],
+          "daily_budget": "monitored",
+          "optimize_frequency": "daily"
+        },
+        "zomato_ads": {
+          "enabled": true,
+          "metrics": ["spend", "impressions", "conversions", "roi", "cpa"],
+          "daily_budget": "monitored",
+          "optimize_frequency": "daily"
+        },
+        "google_ads": {
+          "enabled": true,
+          "campaigns": ["biryani_search", "local_discovery"],
+          "metrics": ["cpc", "ctr", "conversion_rate", "roi"]
+        },
+        "instagram": {
+          "enabled": true,
+          "metrics": ["engagement_rate", "reach", "saves", "shares"],
+          "tracking": ["reels_performance", "story_views", "follower_growth"]
+        },
+        "influencer_campaigns": {
+          "enabled": true,
+          "tracking": ["code_redemptions", "orders_attributed", "roi_per_influencer"],
+          "alert_threshold": "low_performing_influencer"
+        }
+      }
+    },
+    "customer_insights": {
+      "enabled": true,
+      "interval_minutes": 15,
+      "metrics": {
+        "order_patterns": {
+          "enabled": true,
+          "track": ["frequency", "day_of_week", "time_of_day", "location"]
+        },
+        "customization_preferences": {
+          "enabled": true,
+          "track": ["spice_level", "protein_choice", "toppings", "sides"]
+        },
+        "customer_segments": {
+          "enabled": true,
+          "analyze": ["high_value", "frequent", "at_risk", "one_time"]
+        },
+        "retention_metrics": {
+          "enabled": true,
+          "track": ["repeat_rate", "churn_rate", "ltv_trend"]
+        },
+        "feedback_sentiment": {
+          "enabled": true,
+          "sources": ["reviews", "surveys", "customer_support"],
+          "alert_threshold": "negative_sentiment_spike"
+        }
+      }
+    },
+    "financial_metrics": {
+      "enabled": true,
+      "interval_minutes": 60,
+      "metrics": {
+        "revenue": {
+          "enabled": true,
+          "granularity": "hourly",
+          "track": ["total", "by_platform", "by_location"]
+        },
+        "unit_economics": {
+          "enabled": true,
+          "track": ["aov", "cac", "ltv", "margin%"],
+          "benchmark_against": "house_of_biryan"
+        },
+        "ad_spend_efficiency": {
+          "enabled": true,
+          "track": ["roi_by_platform", "cpa_trend", "payback_period"]
+        },
+        "direct_ordering_performance": {
+          "enabled": true,
+          "track": ["direct_order_%", "whatsapp_orders", "website_orders", "margin_improvement"]
+        },
+        "forecasting": {
+          "enabled": true,
+          "horizons": ["7_day", "30_day", "90_day", "6_month"],
+          "scenarios": ["conservative", "expected", "aggressive"]
+        }
+      }
+    }
+  },
+  "alerting": {
+    "channels": {
+      "slack": {
+        "enabled": false,
+        "webhook": "INSERT_SLACK_WEBHOOK",
+        "severity_levels": ["critical", "high"]
+      },
+      "email": {
+        "enabled": true,
+        "recipients": ["getjeevan@example.com"],
+        "frequency": "daily_digest"
+      },
+      "dashboard": {
+        "enabled": true,
+        "realtime": true
+      }
+    },
+    "critical_alerts": [
+      {
+        "id": "competitor_major_change",
+        "condition": "competitor_price_change > 10%",
+        "action": "immediate_notification"
+      },
+      {
+        "id": "seo_ranking_drop",
+        "condition": "top_10_keyword_drop > 5_positions",
+        "action": "daily_report"
+      },
+      {
+        "id": "roi_threshold_breach",
+        "condition": "marketing_roi < 2.5x",
+        "action": "immediate_alert"
+      },
+      {
+        "id": "customer_churn_spike",
+        "condition": "churn_rate_increase > 15%",
+        "action": "immediate_alert"
+      }
+    ]
+  },
+  "reporting": {
+    "automated_reports": [
+      {
+        "name": "daily_digest",
+        "schedule": "6:00 AM",
+        "recipients": ["getjeevan@example.com"],
+        "sections": [
+          "competitor_alerts",
+          "seo_changes",
+          "marketing_performance",
+          "revenue_summary",
+          "action_items"
+        ]
+      },
+      {
+        "name": "weekly_strategy",
+        "schedule": "Monday 9:00 AM",
+        "recipients": ["getjeevan@example.com"],
+        "sections": [
+          "competitive_positioning",
+          "seo_opportunities",
+          "marketing_roi_analysis",
+          "customer_insights",
+          "financial_forecast",
+          "strategic_recommendations"
+        ]
+      },
+      {
+        "name": "monthly_deep_dive",
+        "schedule": "1st of month 10:00 AM",
+        "recipients": ["getjeevan@example.com"],
+        "sections": [
+          "market_analysis",
+          "growth_metrics",
+          "roi_analysis",
+          "competitive_benchmarking",
+          "forecast_review",
+          "strategic_roadmap"
+        ]
+      }
+    ]
+  },
+  "data_retention": {
+    "operational_data": "24_months",
+    "financial_data": "7_years",
+    "customer_data": "24_months",
+    "backups": "daily"
+  },
+  "performance_targets": {
+    "organic_orders_growth": "+48%_month_1",
+    "paid_ad_roi": "3-4x",
+    "direct_orders": "15-20%_of_total",
+    "customer_retention": "30-40%_repeat",
+    "total_revenue_growth": "+35-50%_6_months"
+  }
+}
